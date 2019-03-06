@@ -1,0 +1,711 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font-family: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* 
+	ORANGE: #f15a24;
+	Text: #4d4d4d; dark gray
+	Divider: #f5f5f5; light gray
+*/ 
+
+@font-face {
+	    font-family: 'Brandon Grotesque';
+	    src: url('fonts/brandongrotesque-regular-webfont.eot');
+	    src: url('fonts/brandongrotesque-regular-webfont.eot?#iefix') format('embedded-opentype'),
+	         url('fonts/brandongrotesque-regular-webfont.woff2') format('woff2'),
+	         url('fonts/brandongrotesque-regular-webfont.woff') format('woff'),
+	         url('fonts/brandongrotesque-regular-webfont.ttf') format('truetype'),
+	         url('fonts/brandongrotesque-regular-webfont.svg#brandon_grotesqueregular') format('svg');
+	    font-weight: 400;
+	    font-style: normal;
+	}
+	
+	@font-face {
+	    font-family: 'Brandon Grotesque';
+	    src: url('fonts/brandongrotesque-black-webfont.eot');
+	    src: url('fonts/brandongrotesque-black-webfont.eot?#iefix') format('embedded-opentype'),
+	         url('fonts/brandongrotesque-black-webfont.woff2') format('woff2'),
+	         url('fonts/brandongrotesque-black-webfont.woff') format('woff'),
+	         url('fonts/brandongrotesque-black-webfont.ttf') format('truetype'),
+	         url('fonts/brandongrotesque-black-webfont.svg#brandon_grotesqueblack') format('svg');
+	    font-weight: 900;
+	    font-style: normal;
+	}
+
+html { height: 100%; }
+body { min-height: 100%; }
+	
+html, body {
+	height: 100%;
+	margin: 0; padding: 0;
+	/*overflow-x: hidden; */ /* any overflow breaks the momentum scroll on body */
+	background-color: #f2f2f2;
+	text-decoration: none;
+	font-size: 12px;
+	font-family: 'Brandon Grotesque', sans-serif;
+}
+	
+* { box-sizing: border-box; }
+	*,
+	*:before, 
+	*:after { box-sizing: inherit; }
+
+body { 	
+  width: 100%;
+  top: 0; left: 0;	
+  margin: 0; padding: 0; 
+  min-width: 100%;
+  min-height: 100%;
+  background-color: white;
+}
+
+/* ////////////////// START NAV BAR ////////////////// */
+/* hide tiny checkbox on pages load */
+input#navigation {
+	visibility: hidden;
+}
+
+nav { 
+	width: 280px;
+	min-width: 280px;
+	height: 100%; 
+	position: fixed;   /*  keeps NAVBAR stuck to the  */
+	right: 0;		   /*  right side of the browser  */
+	margin: 0;  padding: 0;
+	z-index: 100;
+	border-left: 1px solid #f5f5f5;
+	background-color: #fff;
+	box-shadow: 0px 0px 15px rgba(0, 0, 0, .2);
+	}
+
+ /* MAIN NAV BAR CATEGORIES */
+	/* NAV HOVER FX */
+nav .hoverthis { display: inline; padding: 8px; } /* Main category icon's inline */
+	.showme { display: none; }
+	.onmouseout { display: inline; }
+	.hoverthis:hover .showme { display: inline; } /* Hover category icon's inline */
+	.hoverthis:hover .onmouseout { display: none; }
+
+		#imgpos {  margin-top: 20px; }	/* Main category icon spacing from top */
+
+h2 { 
+	text-align: center;  
+	font-size: 16px;
+	color: #4d4d4d;
+	margin-top: 30px;
+	margin-bottom: 20px;
+		/* 20px spacing between nav bar elements: 
+		   h2 (Projects title), #imgpos (main category icons), 
+		   .divider (separator line) and .flex-grid-container 
+		   (lower grid icons) 
+		*/
+	font-family: Brandon Grotesque;
+	font-weight: 900;
+	font-style: normal;
+	}
+	
+nav img { /* pos & size of ALL nav icons */
+	position: relative;
+	left: 15px;
+	width: 64px;
+	}
+
+	.hoverthis { width: 0px; } /* Remove invisible space around filters when hovering */
+	
+		/* NAV TEXT HOVER CHANGES FX */
+.first { display: inline; } /* Professional styling - hover FX stays when page is active */
+
+/* ////////////////// END NAV BAR ////////////////// */	
+/* ////////////////// START IMAGE DISPLAY ////////////////// */
+* { box-sizing: border-box; }
+	*,
+	*:before,
+	*:after { box-sizing: inherit; }
+	
+		@media \0screen { img { width: auto; /* for ie 8 */ } }
+	
+/* ////////////////// END IMAGE DISPLAY ////////////////// */
+/* ////////////////// START NAV GRID ICONS ////////////////// */
+nav, #navi { overflow: scroll; }
+
+.flex-grid-container {
+	display: flex; 
+	justify-content: center;
+	height: auto;
+	width: 280px;
+	}
+	
+.flex-grid {
+	width: 240px;
+	height: 100%; /* scroll box height */
+	display: flex;
+	flex-wrap: wrap;
+	position: relative;
+	}
+
+.flex-grid-item img { 
+	width: 64px;
+	height: 64px;
+	left: 0px;
+	top: 0px; /* spacing from top of scrolling grid to top of first icon's row */
+	padding: 7px; 
+	}
+	
+/* GROW HOVER FX for icon's in nav grid */
+	/* .hvr-grow = main nav bar */ 
+	/* #hvr-grow = small screen nav bar only */
+.hvr-grow, #hvr-grow { 
+	transform: translateZ(0);
+	-ms-transform: translateZ(0); /* IE 9 */
+	-webkit-transform: translateZ(0); /* Safari */
+	transition-duration: 0.1s;
+	transition-property: transform;
+	display: inline-block;
+	backface-visibility: hidden;
+	margin: 0 auto;
+	position: relative;  /* centering   */
+				 /* positioning */
+	}
+	
+.hvr-grow:hover, #hvr-grow:hover,
+.hvr-grow:focus, #hvr-grow:focus
+.hvr-grow:active, #hvr-grow:active {
+	transform: scale(1.1);
+	}
+
+/* DROP SHADOW FX for SVG icon's in nav grid */
+	/* .flex-grid img = main nav bar icons */ 
+	/* #nav img = small screen nav bar icons only */
+.flex-grid img, #nav img { 
+	-webkit-filter: drop-shadow( 2px 2px 2px rgba(0, 0, 0, .3 ));
+	filter: drop-shadow( 2px 2px 2px rgba(0, 0, 0, .3 )); /* Same syntax as box-shadow, 
+														except for the spread property */
+}
+	
+/*  ///////  MAIN IMAGE ///////  */	
+.mainimage img { width: calc(100% - 280px); } /* main image for all subsequent pages only */
+	
+/*  ///////  MAIN IMAGE & CONTACT FORM ///////  */		
+.container { 
+	position: relative;
+	width: calc(100% - 280px);
+	background-color: #fff;
+	}
+
+.container img { max-width: 100%; }
+
+
+
+/*  ///////  CONTACT FORM STYLING  ///////  */
+
+/*
+.thank-you, .error_box {
+	position: absolute;
+	margin-top: 25%;
+	margin-left: 25%;
+	width: 50%;
+	top: 60px;
+	
+	color: #4d4d4d;
+	font-size: 16px;
+	font-family: 'Brandon Grotesque', sans-serif;
+	font-weight: 900; 
+	font-style: normal;
+	text-align: center;
+}
+*/
+/*
+#form-container {
+	position: absolute;
+	min-width: 100%;
+	max-width: 100%;
+	margin-left: 0;
+	margin-top: 25%;
+	top: 100px;
+	background-color: #fff;
+	
+}
+*/
+/*
+#form-wrapper {
+	position: relative;
+	margin: 0 auto;
+	max-width: 320px;
+	height: 600px;
+}
+*/
+/* anti-spam */
+/*
+li.screenReader { display: none; }
+*/
+/*
+label {
+	display: block; 
+	color: #f15a24; 
+	font-size: 16px;
+	padding-bottom: 20px; 
+	font-family: Brandon Grotesque;
+	font-weight: 900; 
+	font-style: normal;
+	border-radius: 0;
+	} */
+
+/*label[for='email'], [for='textarea'] { padding-top: 50px; border-radius: 0; }*/
+	
+/* Style the text boxes */
+/*
+input, textarea {
+	width: 100%;  
+	border: none; 
+	border-bottom: 1px solid #c8c8c8;  
+    resize: none;
+	font-family: Brandon Grotesque;
+	font-weight: 400;
+	font-style: normal;
+	color: #4d4d4d; 
+	font-size: 16px;
+	box-sizing: border-box; 
+	outline: none;
+	padding: 0;
+	border-radius: 0;
+	}
+*/
+/*
+input::placeholder { color: #c8c8c8; }
+
+textarea::placeholder { color: #c8c8c8; }
+
+textarea { height: 100px; }
+*/
+/*
+ol.button-group { 
+		-webkit-filter: drop-shadow( 2px 2px 2px rgba(0, 0, 0, .3 ));
+		filter: drop-shadow( 2px 2px 2px rgba(0, 0, 0, .3 ));	
+	position: relative;
+	width: 150px;
+	height: 50px;
+	top: 30px;
+	left: calc(50% - 75px);
+	right: calc(50% - 75px);
+	margin-top: 40px;
+	border: 0;
+	cursor: pointer;
+	
+	background-color: #f15a24;
+}
+*/
+/*
+input[type='submit'] {
+		-webkit-appearance: none; 
+		-moz-appearance: none;   
+		appearance: none;		  
+	position: absolute;
+	width: 150px;
+	height: 50px;
+	padding-left: 20px;
+	border: 0;
+	cursor: pointer;
+	
+	color: #fff;
+	font-size: 16px;
+	font-family: 'Brandon Grotesque', sans-serif;
+	font-weight: 900; 
+	font-style: normal;
+	text-align: left;
+	background-color: #f15a24;
+}
+*/
+/*
+input[type='image'] {
+	position: absolute;
+	width: 22px;
+	height: 22px;
+	margin-top: 14px;	
+	margin-left: 103px; 
+	border: 0;
+	cursor: pointer;
+}
+*/
+/*
+fieldset { border: 0; }
+*/
+
+
+/* VIDEO ELEMENTS ONLY */
+.container { /* video and image page width minus the navbar */
+	position: relative;
+	width: calc(100% - 280px);
+	z-index: 50; 
+	}
+
+.container img { /* main background img */
+	max-width: 100%;
+	}	
+	
+video { /* video width & positioning */
+	width: 60%;
+	position: absolute;
+	top: 15px;
+	margin-top: 30%;
+	margin-left: 30%;
+	z-index: 1;
+		-webkit-filter: drop-shadow( 2px 2px 2px rgba(0, 0, 0, .3 ));
+		filter: drop-shadow( 2px 2px 2px rgba(0, 0, 0, .3 ));
+	}
+
+#slide { display: none; } /* hide checkbox */
+#flex-grid, .menu { display: none; }
+
+/* contact btns home page
+#container-up {
+	position: absolute;
+	margin-top: 120%;
+	width: 100%;
+	z-index: 400;
+} */
+
+#container-down {
+	position: absolute;
+	margin-top: 320%;
+	width: 100%;
+	z-index: 400;
+}
+
+#wrapper-up, #wrapper-down {
+	position: relative;
+	margin: 0 auto;
+	width: 150px;
+	height: 50px;
+}
+
+button {
+	width: 150px;
+	height: 50px;
+	padding: 0;
+	
+	text-align: left;
+	background-color: #f15a24;
+	cursor: pointer;
+	border: none;
+	border-radius: 0;
+	text-decoration: none;
+	font-family: 'Brandon Grotesque', sans-serif;
+	font-weight: 900;
+	font-size: 16px;
+	color: #fff;
+	outline: none;
+	-webkit-filter: drop-shadow( 2px 2px 2px rgba(0, 0, 0, .3 ));
+	filter: drop-shadow( 2px 2px 2px rgba(0, 0, 0, .3 )); /* Same syntax as box-shadow */
+
+	-webkit-appearance: none; /* removes IOS */
+	-moz-appearance: none;    /* button styling */
+	appearance: none;		  /* override */
+}
+
+button span {
+	padding-left: 20px;
+
+}
+
+#container-up img, #container-down img {
+	width: 22px;
+	height: 22px;
+	right: 20px;
+}
+
+
+
+
+/* contact btn styling & position */
+#contactbtn {
+	position: fixed;
+	bottom: 20px;
+	right: 300px;
+	z-index: 400;
+	opacity: .5;
+}
+
+#contactbtn:hover { opacity: 1; }
+
+#contactbtn img { 
+	width: 48px;  height: 48px;
+	-webkit-filter: drop-shadow( 2px 2px 2px rgba(0, 0, 0, .3 ));
+	filter: drop-shadow( 2px 2px 2px rgba(0, 0, 0, .3 )); /* Same syntax as box-shadow */
+}
+
+
+	/*   //////////////////////  MEDIA QUERIES START  ////////////////////// */
+	
+	/*   //////////////////////  MEDIA QUERIES FOR CONTACT FORM & BODY (NAV)  ////////////////////// */   
+	
+	@media screen and (min-width: 7681px) {
+		body { zoom: 5.7; }
+	}
+	
+	@media screen and (max-width: 7680px) and (min-width: 7169px) { /* 8K */
+		body { zoom: 5.4; }
+	}
+	
+	@media screen and (max-width: 7168px) and (min-width: 6785px) {
+		body { zoom: 5.1; }
+	}
+	
+	@media screen and (max-width: 6784px) and (min-width: 6401px) {
+		body { zoom: 4.8; }
+	}
+	
+	@media screen and (max-width: 6400px) and (min-width: 6017px) {
+		body { zoom: 4.5; }
+	}
+	
+	@media screen and (max-width: 6016px) and (min-width: 5505px) { /* 6K */
+		body { zoom: 4.2; }
+	}
+	
+	@media screen and (max-width: 5504px) and (min-width: 5121px) {
+		body { zoom: 3.9; }
+	}
+	
+	@media screen and (max-width: 5120px) and (min-width: 4609px) { /* 5K Retina */
+		body { zoom: 3.6; }
+	}
+	
+	@media screen and (max-width: 4608px) and (min-width: 4225px) {
+		body { zoom: 3.3; }
+	}
+	
+	@media screen and (max-width: 4224px) and (min-width: 3841px) {
+		body { zoom: 3; }
+	}
+	
+	@media screen and (max-width: 3840px) and (min-width: 3457px) { /* 4K */
+		body { zoom: 2.7; }
+	}
+	
+	@media screen and (max-width: 3456px) and (min-width: 3073px) {
+		body { zoom: 2.4; }
+	}
+	
+	@media screen and (max-width: 3072px) and (min-width: 2689px) { /* 3K */		
+		body { zoom: 2.1; }
+	}
+	
+	@media screen and (max-width: 2688px) and (min-width: 2305px) {
+		body { zoom: 1.8; }
+	}
+	
+	@media screen and (max-width: 2304px) and (min-width: 1921px) { 
+		body { zoom: 1.5; }
+	}
+	
+	@media screen and (max-width: 1920px) and (min-width: 1537px) { /* 2K */
+		body { zoom: 1.2; }
+	}
+	
+	@media screen and (max-width: 1536px) and (min-width: 1121px) { /* when nav bar opens */
+		body { zoom: 0; }
+	}
+	
+	
+	
+
+	/* hide mini nav bar 'PROJECTS' title when using larger browser */
+	@media screen and (min-width: 1121px) { 
+		.pros { display: none; }
+		#menu { display: none; }
+		.container img { width: 100%; position: absolute; z-index: 0; }
+		#container-up { margin-top: 120%; zoom: 1.6; }
+		#container-down { margin-top: 321%; zoom: 1.6; }
+	}
+		
+	@media screen and (max-width: 1120px) {
+		nav { display: none; }
+		.container { width: 100%; position: relative; z-index: 100; } /* main image & form divs */	
+		.container img { width: 100%; position: absolute; z-index: 0; }
+
+		#navi { 
+			width: 280px;
+			min-width: 280px;
+			height: 100%; 
+			position: fixed;   /*  keeps NAVBAR stuck to the  */
+			top: 0; right: 0;  /*  right side of the browser  */
+			border-left: 1px solid #f5f5f5;
+			background-color: #fff;
+			box-shadow: 0px 0px 15px rgba(0, 0, 0, .2);		
+			/* Transition FX: Works in Chrome, Safari, FireFox, Opera, IE 9, 10 & 11  */
+			margin:0 -285px 0 0px; /* keeps navi hidden: 0, -285px movement from the right, 0, 0px movement from the left */				
+			z-index: 500;
+			overflow: auto;
+			-webkit-overflow-scrolling: touch; /* scroll doesnt work on body */
+		}			
+		
+		#flex-grid-container { /* entire nav icon list */
+			display: flex; 
+			justify-content: center;
+			height: 567px;
+			width: 280px;
+		}	
+		
+		#flex-grid { /* individual nav icons outer div */
+			width: 240px;
+			height: 100%; /* scroll box height */
+			display: flex;
+			flex-wrap: wrap;
+			position: relative;
+		}
+		
+		#flex-grid-container a { /* individual nav icons */
+			width: 64px;
+			height: 64px;
+			left: 0px;
+			top: 0px; /* spacing from top of scrolling grid to top of first icon's row */
+			padding: 7px; 
+			-webkit-filter: drop-shadow( 2px 2px 2px rgba(0, 0, 0, .3 ));
+			filter: drop-shadow( 2px 2px 2px rgba(0, 0, 0, .3 )); 
+		}
+		
+		/* To please Jeffrey & Chrome's weird invisible spacing issues */
+		img.menu, span.hvr-grow, label.toggle { width: 48px; height: 48px; }
+		
+		.menu { /* menu icon styling */
+			display: block;
+			width: 48px;
+			height: 48px;
+			position: fixed;
+			top: 20px;  right: 20px;
+			padding: 0;
+			z-index: 999;
+			cursor: pointer;
+			-webkit-filter: drop-shadow( 2px 2px 2px rgba(0, 0, 0, .3 ));
+			filter: drop-shadow( 2px 2px 2px rgba(0, 0, 0, .3 )); /* Same syntax as box-shadow */
+		}
+		
+		.menu img { width: 48px; height: 48px; }
+		
+		/* Transition FX: Works in Chrome, Safari, FireFox, Opera, IE 9, 10 & 11 */
+		input[type="checkbox"]{
+			display: none;
+		}
+		
+		input[type="checkbox"]:checked ~ #navi {
+			margin: 0;
+		}
+		
+		input[type="checkbox"]:checked ~ .menu {
+			right: 300px; /* 20px left of nav bar when opened */
+		}
+		
+		/* END transition FX code: #navi, .menu, x3 - input[type="checkbox"] */
+		
+		#contactbtn { right: 20px; }		
+	}
+	
+	
+	/*   //////////////////////  MEDIA QUERIES FOR NAVI  //////////////////////    */
+	
+	@media screen and (max-width: 640px) { /* iPhone 5s & smaller */
+		#navi { 
+			overflow: scroll;
+			width: 200px;
+			min-width: 200px;	
+		}
+		
+		#slide:checked + .container .toggle { right: 203px;  } 
+		#flex-grid-container { width: 200px; }
+		#flex-grid  { width: 156px; }
+		
+		input[type="checkbox"]:checked ~ .menu {
+			right: 220px; /* 20px left of nav bar when opened */
+		}	
+	}
+
+	/*   //////////////////////  MEDIA QUERIES FOR HOME CONTACT BTNS  //////////////////////    */
+
+	@media screen and (max-width: 1120px) and (min-width: 769px) {
+		#container-up { margin-top: 121%; zoom: 1.3; }
+		#container-down { margin-top: 321%; zoom: 1.3; }
+	}
+
+	@media screen and (max-width: 768px) and (min-width: 571px) {
+		#container-up { margin-top: 120%; zoom: 1; }
+		#container-down { margin-top: 321%; zoom: 1; }
+	}
+	
+	@media screen and (max-width: 570px) and (min-width: 521px) {
+		#container-up { margin-top: 120%; zoom: .9; }
+		#container-down { margin-top: 321%; zoom: .9; }
+	}
+	
+	@media screen and (max-width: 520px) and (min-width: 471px) {
+		#container-up { margin-top: 120%; zoom: .8; }
+		#container-down { margin-top: 321%; zoom: .8; }
+	}
+	
+	@media screen and (max-width: 470px) and (min-width: 371px) {
+		#container-up { margin-top: 120%; zoom: .7; }
+		#container-down { margin-top: 321%; zoom: .7; }
+	}
+	
+	@media screen and (max-width: 370px) and (min-width: 321px) {
+		#container-up { margin-top: 120%; zoom: .6; }
+		#container-down { margin-top: 321%; zoom: .6; }
+	}
+	
+	@media screen and (max-width: 320px) and (min-width: 271px) {
+		#container-up { margin-top: 120%; zoom: .5; }
+		#container-down { margin-top: 321%; zoom: .5; }
+	}
+	
+	@media screen and (max-width: 270px) and (min-width: 221px) {
+		#container-up { margin-top: 119%; zoom: .5; }
+		#container-down { margin-top: 321%; zoom: .5; }
+	}		
+		
+	@media screen and (max-width: 220px) and (min-width: 0px) {
+		#container-up { margin-top: 118%; zoom: .5; }
+		#container-down { margin-top: 320%; zoom: .5; }
+	}
+	
+	
+	
+	
